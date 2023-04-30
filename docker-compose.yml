@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: deltareboqueDB
+      POSTGRES_USER: deltareboque
+      POSTGRES_PASSWORD: deltareboquepass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
