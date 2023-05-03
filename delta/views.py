@@ -21,6 +21,9 @@ def create(request):
     if form.is_valid():
         form.save()
         return redirect('home')
+    else:
+        print('Formulário inválido:', form.errors)
+
 
 
 def view(request, pk):

@@ -20,3 +20,4 @@ class Cadastro(models.Model):
 
 
 
+
