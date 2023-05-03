@@ -25,7 +25,6 @@ def create(request):
         print('Formulário inválido:', form.errors)
 
 
-
 def view(request, pk):
     data = {}
     data['db'] = Cadastro.objects.get(pk=pk)

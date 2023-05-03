@@ -15,8 +15,11 @@ class Cadastro(models.Model):
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     cliente = models.CharField(max_length=50)
     telefone = models.CharField(max_length=20)
-    de = models.CharField(max_length=100)
-    para = models.CharField(max_length=100)
+    condutor = models.CharField(max_length=50)
+    destino_inicial = models.CharField(max_length=150)
+    destino_final = models.CharField(max_length=150)
+    observacoes = models.CharField(max_length=350, null=True, blank=True)
+
 
 
 

@@ -12,16 +12,5 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  app:
-    build: .
-    depends_on:
-      - db
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./delta:/delta
-      - ./project:/project
-    command: python3 manage.py runserver 0.0.0.0:8000
-
 volumes:
   pgdata:
