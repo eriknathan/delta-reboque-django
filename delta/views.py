@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from delta.forms import CadastroForm
+from django.http import HttpResponse
+from django.template.loader import get_template
+from weasyprint import HTML
 from delta.models import Cadastro
 
 
@@ -51,3 +54,4 @@ def delete(request, pk):
     db = Cadastro.objects.get(pk=pk)
     db.delete
     return redirect('home')
+
