@@ -7,11 +7,19 @@
 </head>
 <body>
     <div class="col-8 m-auto pt-4 pb-2 text-center">
-        <h1>Delta Reboque</h1>
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <h1>Delta Reboque</h1>
+        </a>
     </div>
 
     <div class="col-8 m-auto pt-3 pb-2 text-center">
         <a href="/form" class="btn btn-success"> Novo Cadastro de Viagem </a>
+    </div>
+
+    <div class="col-8 m-auto pt-3 pb-2 text-center">
+        <form method="get">
+            <input type="text" name="search" class="form-control" placeholder="Buscar...">
+        </form>
     </div>
 
     <div class="col-8 m-auto pt-3 pb-2 text-center">
@@ -24,7 +32,7 @@
                 <th scope="col">SEGURADORA</th>
               <th scope="col">PRODUTO</th>
               <th scope="col">SINISTRO</th>
-              <th scope="col">AÇÕES</th>
+              <th scope="col">FUNÇÕES</th>
             </tr>
           </thead>
           <tbody>
@@ -45,6 +53,21 @@
           {% endfor %}
           </tbody>
         </table>
+    </div>
+
+    <div class="pagination col-8 m-auto pt-3 pb-2 text-center">
+        {% if db.has_previous %}
+            <a href="?page={{db.previous_page_number}}"> < </a>
+        {% endif %}
+
+        <h6>
+            {{db.number}}
+        </h6>
+
+
+        {% if db.has_next %}
+            <a href="?page={{db.next_page_number}}"> > </a>
+        {% endif %}
     </div>
 
 </body>
