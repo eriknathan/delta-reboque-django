@@ -1,14 +1,23 @@
 FROM python:3.9.16-slim-buster
 LABEL authors="eriknathan"
 
-COPY requirements.txt /
+# Set the working directory to /app
+WORKDIR /app
 
-RUN pip install -r requirements.txt
+# Copy the requirements file into the container
+COPY requirements.txt .
 
-COPY ./delta /delta/
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./project /project/
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-COPY manage.py /
+# Expose port 8000 for the Django development server
+EXPOSE 8000
 
-ENTRYPOINT python3 manage.py runserver
+# Define environment variable for Python to run in unbuffered mode
+ENV PYTHONUNBUFFERED 1
+
+# Start the Django development server when the container starts
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
