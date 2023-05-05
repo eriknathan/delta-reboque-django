@@ -67,6 +67,6 @@ def update(request, pk):
 
 def delete(request, pk):
     db = Cadastro.objects.get(pk=pk)
-    db.delete
+    db.delete()
     return redirect('home')
 
