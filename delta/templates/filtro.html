@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Delta Reboque</title>
@@ -14,31 +14,32 @@
     </nav>
 
     <h1 class="text-center pt-4">Filtro por mês</h1>
-    <div class="col-8 m-auto pt-4 pb-2 text-center">
+    <div class="col-15 m-auto pt-4 pb-2 text-center">
         <a href="/" class="btn btn-dark">Voltar</a>
 
         <form method="POST">
-          {% csrf_token %}
-            <label for="mes" class="pt-4"><h5>Selecione o mês:</h5></label>
-          <select name="mes" id="mes" class="custom-select">
-            <option value="1">Janeiro</option>
-            <option value="2">Fevereiro</option>
-            <option value="3">Março</option>
-            <option value="4">Abril</option>
-            <option value="5">Maio</option>
-            <option value="6">Junho</option>
-            <option value="7">Julho</option>
-            <option value="8">Agosto</option>
-            <option value="9">Setembro</option>
-            <option value="10">Outubro</option>
-            <option value="11">Novembro</option>
-            <option value="12">Dezembro</option>
-          </select>
-          <button type="submit">Buscar</button>
+            {% csrf_token %}
+            <label for="mes" class="pt-4"><h4>Selecione o mês: </h4></label>
+            <select name="mes" id="mes" class="col-3 m-auto">
+                <option value="0"></option>
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+            </select>
+            <button type="submit" class="btn btn-success">Buscar</button>
         </form>
 
         {% if dados %}
-        <h3 class="pt-4">Valor total do mês {{ mes }}: R$ {{ total_valor }}</h3>
+        <h3 class="pt-3">Valor total do mês {{ mes }}: R$ {{ total_valor }}</h3>
         <div class="col-8 m-auto pt-3 pb-2 text-center">
             <table class="table mx-auto">
                     <thead class="thead-dark">
