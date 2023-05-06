@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db import connection
 from delta.forms import CadastroForm
 from delta.models import Cadastro
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -70,3 +71,22 @@ def delete(request, pk):
     db.delete()
     return redirect('home')
 
+
+def filtro(request):
+    if request.method == 'POST':
+        mes = request.POST['mes']
+        query_soma = """
+            SELECT SUM(valor) as total_valor FROM delta_cadastro
+            WHERE EXTRACT(MONTH FROM "date") = %s;
+        """
+        query_dados = """
+            SELECT * FROM delta_cadastro WHERE EXTRACT(MONTH FROM "date") = %s;
+        """
+        with connection.cursor() as cursor:
+            cursor.execute(query_soma, [mes])
+            resultado = cursor.fetchone()
+            total_valor = resultado[0]
+            cursor.execute(query_dados, [mes])
+            dados = cursor.fetchall()
+        return render(request, 'filtro.html', {'total_valor': total_valor, 'dados': dados, 'mes': mes})
+    return render(request, 'filtro.html')
